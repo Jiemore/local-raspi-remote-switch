@@ -1,0 +1,13 @@
+[Unit]
+Description=PCSwitch
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/local-raspi-remote-switch
+ExecStart=/usr/bin/python3 manage.py runserver 0.0.0.0:5000
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target

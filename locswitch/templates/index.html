@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+
+            margin: auto;
+        }
+
+        #box {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin-top: 100px;
+            margin: auto;
+
+        }
+    </style>
+
+</head>
+<script type="text/javascript" src="/static/jquery.min.js"></script>
+<script type="text/javascript" >
+    function pcswitch() {
+        //alert("e");
+        $.ajax({
+            url: "/locon",//所要提交数据的服务器地址
+            type: "GET",
+            dataType: "jsonp",
+            contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+            async: false,
+            cache: false,
+            success: function (data) {
+                if (data.code != 200) {
+                    changeCheckCode();
+                    alert(data.message);
+                } else {
+                    //location.href = "/home/index";//跳转到主页
+                    alert("Error");
+                }
+            }
+        })
+    }
+</script>
+<div>
+    <body>
+        <div id="container">
+            <div id="box" id="switch">
+                <button name="foo" style="display:block;margin:0 auto;height: 100px;width: 100px;" onclick="pcswitch();"
+                    >开/关</button>
+            </div>
+        </div>
+    </body>
+</div>
+
+
+</html>
